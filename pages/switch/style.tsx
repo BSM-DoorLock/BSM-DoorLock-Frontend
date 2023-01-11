@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Switch } from "@mui/material";
 
 export const Room = styled.div`
     position: relative;
@@ -40,7 +41,7 @@ export const StateText = styled.span`
     font-size: 30px;
 `
 
-export const SwitchStyle = styled.div`
+export const SwitchStyle = styled(Switch)`
   /* .MuiSwitch-root.MuiSwitch-sizeMedium.css-julti5-MuiSwitch-root {
     width: 100px;
     height: 50px;

@@ -30,9 +30,7 @@ export default function ToggleDoor(){
             </S.Room>
             <S.RoomName>내 방</S.RoomName>
             <S.StateText>{text}</S.StateText>
-            <S.SwitchStyle>
-              <Switch size={"medium"} color={"primary"} checked={state} onChange={handleSwitch} />  
-            </S.SwitchStyle>
+            <S.SwitchStyle size={"medium"} color={"primary"} checked={state} onChange={handleSwitch} />
         </S.SwitchContainer>
       </div>
     );                                                                      
