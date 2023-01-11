@@ -23,9 +23,9 @@ export const theme: DefaultTheme = {
   //   lightBeige: "#F0E9D2",
   // },
   size: {
-    mobile: `(max-width: ${size.mobile})`,
-    tablet: `(max-width: ${size.tablet})`,
-    laptop: `(max-width: ${size.laptop})`,
+    mobile: `(min-width: ${size.mobile})`,
+    tablet: `(min-width: ${size.tablet})`,
+    laptop: `(min-width: ${size.laptop})`,
     desktop: `(min-width: ${size.desktop})`,
   },
   animation: {

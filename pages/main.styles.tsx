@@ -11,13 +11,19 @@ export const MyRoom = styled.div`
   /* margin: 11% auto auto; */
 `;
 
+export const Title = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+`;
+
 export const ShareRoom = styled(MyRoom)`
   /* p {
     position: fixed;
   } */
 
   .rooms {
-    margin-top: 40px;
     display: flex;
     gap: 30px;
     div {
