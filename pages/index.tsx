@@ -4,6 +4,8 @@ import { alertOpenState } from "../store/AlertOpen";
 import { useRecoilState } from "recoil";
 import Room from "../components/room/Room";
 import styled from "styled-components";
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+
 export default function Home() {
   const [alertOpen, setAlertOpen] = useRecoilState(alertOpenState);
   return (
@@ -16,7 +18,10 @@ export default function Home() {
         <Room number={317} name1={"이현준"} name2={"권민서"} />
       </MyRoom>
       <ShareRoom>
-        <p>공유된 방</p>
+        <div className="title">
+          <p>공유된 방</p>
+          <AddToPhotosIcon/>
+        </div>
         <div className="rooms">
           <Room number={317} name1={"이현준"} name2={"권민서"} />
           <Room number={317} name1={"이현준"} name2={"권민서"} />
@@ -38,18 +43,26 @@ const MyRoom = styled.div`
   height: 40%;
   margin: 11% auto auto;
   p{
-    font-size: 35px;
+    font-size: 30px;
     margin-bottom: 20px;
   }
 `;
 
 const ShareRoom = styled(MyRoom)`
-  p{
-    position: fixed;
+  .title{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    p{
+      margin: 0;
+    }
+    svg{
+      margin-left: 15px;
+    }
   }
 
   .rooms{
-    margin-top: 40px;
+    margin-top: 60px;
     display: flex;
     gap: 30px;
     div{
