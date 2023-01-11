@@ -3,14 +3,11 @@ import styled from "styled-components";
 export const RoomContainer = styled.div`
     width: 200px;
     height: 220px;
-    margin: 0 auto;
     box-shadow: 0 8px 10px lightgray;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px; */
     border-radius: 10px;
 
     .owners{
