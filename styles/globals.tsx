@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   a:link { color: red; text-decoration: none;}
-  a:visited { color: black; text-decoration: none;}
+  a:visited { color: white; text-decoration: none;}
 
   * {
     box-sizing: border-box;
