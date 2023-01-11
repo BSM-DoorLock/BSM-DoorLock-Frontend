@@ -18,7 +18,7 @@ export default function Home() {
         <S.Button>로그인</S.Button>
       </S.Flex> */}
       <Header />
-      <A.Section>
+      <S.MainSection>
         <S.MyRoom>
           <S.Title>
             <p>내 방</p>
@@ -36,7 +36,7 @@ export default function Home() {
             <Room number={317} name1={"이현준"} name2={"권민서"} />
           </div>
         </S.ShareRoom>
-      </A.Section>
+      </S.MainSection>
       <Footer />
     </div>
   );

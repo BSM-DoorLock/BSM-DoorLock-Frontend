@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { Section } from "../styles/all";
+
+export const MainSection = styled(Section)`
+  padding: 56px 11%;
+`;
 
 export const Flex = styled.div`
   display: flex;
