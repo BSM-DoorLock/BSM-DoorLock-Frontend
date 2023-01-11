@@ -1,7 +1,7 @@
 import { DefaultTheme, keyframes } from "styled-components";
 
 const size = {
-  mobile: "600px",
+  mobile: "612px",
   tablet: "900px",
   laptop: "1200px",
   desktop: "1800px",
