@@ -1,16 +1,22 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
 
-// 위에서 받은 `normalize`로 기본 css가 초기화 합니다.
 const GlobalStyle = createGlobalStyle`
   ${normalize}
 
+  a:link { color: red; text-decoration: none;}
+  a:visited { color: black; text-decoration: none;}
 
   * {
     box-sizing: border-box;
     font-family: NotoSans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: bold;
+  }
+
+  a {
+    font-family: NotoSans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   @font-face {
@@ -21,6 +27,11 @@ const GlobalStyle = createGlobalStyle`
 
   button{
     cursor: pointer;
+  }
+  
+  p {
+    font-size: 35px;
+    margin-bottom: 20px;
   }
 `;
 
