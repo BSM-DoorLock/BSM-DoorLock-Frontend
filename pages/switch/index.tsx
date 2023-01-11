@@ -17,7 +17,7 @@ export default function ToggleDoor(){
     }
 
     return (
-      <div>
+      < >
         <S.ArrowStyle>
             <Link href={"/"}>
               <ArrowBackIcon />
@@ -32,7 +32,7 @@ export default function ToggleDoor(){
             <S.StateText>{text}</S.StateText>
             <S.SwitchStyle size={"medium"} color={"primary"} checked={state} onChange={handleSwitch} />
         </S.SwitchContainer>
-      </div>
+      </>
     );                                                                      
 }
 
