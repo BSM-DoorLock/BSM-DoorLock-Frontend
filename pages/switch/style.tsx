@@ -10,6 +10,8 @@ export const Room = styled.div`
         transform: translate(-50%);
         font-size: 18px;
     }
+    transform: scale(1.5);
+    margin-bottom: 10px;
 `
 
 export const SwitchContainer = styled.div`
@@ -19,28 +21,27 @@ export const SwitchContainer = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -40%);
 `
 
 export const ArrowStyle = styled.span`
     svg{
-        margin: 10px 0 0 20px;
-        width: 35px;
-        height: 35px;
+        margin: 30px 0 0 20px;
+        width: 45px;
+        height: 45px;
         color: black;
     }
 `
 
-export const RoomName = styled.span`
-    margin-top: 10px;   
-    font-size: 30px;
+export const RoomName = styled.p` 
+    font-size: 40px;
 `
 
 export const StateText = styled.span`
-    margin: 3em 0 15px 0;
-    font-size: 30px;
+    margin: 3.5em 0 30px 0;
+    font-size: 40px;
 `
 
 export const SwitchStyle = styled(Switch)`
-  transform: scale(2);
+  transform: scale(3);
 `;
