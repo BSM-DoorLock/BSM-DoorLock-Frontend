@@ -42,15 +42,5 @@ export const StateText = styled.span`
 `
 
 export const SwitchStyle = styled(Switch)`
-  /* .MuiSwitch-root.MuiSwitch-sizeMedium.css-julti5-MuiSwitch-root {
-    width: 100px;
-    height: 50px;
-    display: flex;
-  }
-  .MuiButtonBase-root.MuiSwitch-switchBase.MuiSwitch-colorSuccess.PrivateSwitchBase-root.MuiSwitch-switchBase.MuiSwitch-colorSuccess.css-1xvpzln-MuiButtonBase-root-MuiSwitch-switchBase {
-    
-  } */
-  .MuiSwitch-root.MuiSwitch-sizeMedium.css-julti5-MuiSwitch-root{
-    transform: scale(2);
-  }
+  transform: scale(2);
 `;
