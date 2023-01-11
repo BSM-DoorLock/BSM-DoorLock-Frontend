@@ -7,19 +7,14 @@ export const Flex = styled.div`
 
 export const MyRoom = styled.div`
   padding-left: 5px;
-  width: 80%;
   height: 40%;
-  margin: 11% auto auto;
-  p {
-    font-size: 35px;
-    margin-bottom: 20px;
-  }
+  /* margin: 11% auto auto; */
 `;
 
 export const ShareRoom = styled(MyRoom)`
-  p {
+  /* p {
     position: fixed;
-  }
+  } */
 
   .rooms {
     margin-top: 40px;
