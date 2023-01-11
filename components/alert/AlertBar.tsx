@@ -11,7 +11,6 @@ function AlertBar() {
     <div>
       <S.StyledSnackbar
         open={alertOpen}
-        autoHideDuration={100000}
         onClose={() => setAlertOpen(false)}
       >
         <S.StyledAlert
