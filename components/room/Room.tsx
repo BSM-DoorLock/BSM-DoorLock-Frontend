@@ -1,6 +1,6 @@
 import Image from "next/image"
 import * as S from './Room.style'
-import { RoomPropsType } from "./types"
+import { RoomPropsType } from "./type"
 
 export default function Room({ number, name1, name2 }: RoomPropsType){
     return(
