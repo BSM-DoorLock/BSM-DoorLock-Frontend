@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  a {
+  a { 
     font-family: NotoSans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
@@ -31,6 +31,10 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
   
+  p {
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
 `;
 
 export default GlobalStyle;

@@ -12,7 +12,7 @@ function Header() {
   const [mounted, setMounted] = useState(false);
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const userQuery = useQuery("user", () => getUser(), {
-    enabled: getLocalStorage(),
+    enabled: getLocalStorage() && localStorage.accessToken !== undefined,
   });
   console.log(userQuery);
 
@@ -53,7 +53,9 @@ function Header() {
               onClose={() => setIsDropDownOpen(false)}
             >
               <S.StyledMenuItem onClick={() => setIsDropDownOpen(false)}>
-                <S.UserInfo href="https://auth.bssm.kro.kr/user">유저 정보</S.UserInfo>
+                <S.UserInfo href="https://auth.bssm.kro.kr/user">
+                  유저 정보
+                </S.UserInfo>
               </S.StyledMenuItem>
               <S.StyledMenuItem onClick={() => logoutMutation.mutate()}>
                 LOGOUT
