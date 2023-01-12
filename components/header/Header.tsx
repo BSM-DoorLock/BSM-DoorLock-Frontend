@@ -14,7 +14,6 @@ function Header() {
   const userQuery = useQuery("user", () => getUser(), {
     enabled: getLocalStorage() && localStorage.accessToken !== undefined,
   });
-  console.log(userQuery);
 
   const logoutMutation = useMutation(() => logout());
   useEffect(() => {

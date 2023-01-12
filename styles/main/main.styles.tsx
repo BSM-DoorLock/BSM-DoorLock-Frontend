@@ -94,3 +94,16 @@ export const Empty = styled.div`
     }
   }
 `;
+
+export const GraphContainer = styled.div`
+  margin-top: 30px;
+
+  select{
+    width: 70px;
+  }
+`
+
+export const GraphText = styled.p`
+  margin-top: 50px;
+  margin-bottom: 40px;
+`
