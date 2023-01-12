@@ -1,5 +1,5 @@
 export interface GraphRoomRankingType{
-    labels: number[];
+    labels: string[];
     datasets: number[];
 }
 

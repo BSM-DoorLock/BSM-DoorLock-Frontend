@@ -87,7 +87,7 @@ export default function Home() {
           </S.Title>
           <div className="rooms">
             {mounted && localStorage.accessToken ? (
-              shareRoomInfo.length > 0 ? (
+              shareRoomInfo?.length > 0 ? (
                 shareRoomInfo.map((value: RoomInfoType, index) => {
                   return (
                     <Room number={value.id} owners={value.owners} key={index} />
@@ -107,7 +107,7 @@ export default function Home() {
         <S.GraphContainer>
           <S.GraphText>공유된 방 비율</S.GraphText>
           {roomRankingInfo.length > 0 && <RoomGraph data={roomRankingInfo} />}
-          <S.GraphText>요청한 방 비율</S.GraphText>
+          <S.GraphText>요청한 사람 비율</S.GraphText>
           {studentRankingInfo.length > 0 && <StudentGraph data={studentRankingInfo} />}
         </S.GraphContainer>
       </S.MainSection>
