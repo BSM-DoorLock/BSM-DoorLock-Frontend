@@ -42,6 +42,9 @@ export default function Home() {
     }
   }, [myRoomQuery, shareRoomQuery]);
 
+  // console.log(myRoomQuery);
+  // console.log(shareRoomQuery);
+  // console.log(shareRoomInfo);
   return (
     <div>
       {/* <S.Flex>
@@ -55,7 +58,7 @@ export default function Home() {
           </S.Title>
           {myRoomQuery.isSuccess ? (
             <S.StyledLink href={`/switch/${myRoomInfo.id}`}>
-              <Room number={myRoomInfo.id} owners={myRoomInfo.owners} />
+              <Room number={myRoomInfo.id} owners={myRoomInfo.owners}/>
             </S.StyledLink>
           ) : (
             <div>로그인 후 이용 가능합니다!</div>
@@ -64,14 +67,27 @@ export default function Home() {
         <S.ShareRoom>
           <S.Title>
             <p>공유된 방</p>
-            <AddToPhotos onClick={() => router.push('/share')} />
+            <AddToPhotos onClick={() => router.push("/share")} />
           </S.Title>
           <div className="rooms">
             {mounted && localStorage.accessToken ? (
-              shareRoomQuery.isSuccess && shareRoomInfo.length > 0 ? (
-                shareRoomInfo.map((value: RoomInfoType, index) => {
+              shareRoomQuery.isSuccess && shareRoomQuery.data ? (
+                shareRoomQuery.data.map((value: RoomInfoType) => {
                   return (
-                    <Room number={value.id} owners={value.owners} key={index} />
+                    <S.StyledLink
+                      href={{
+                        pathname: `/switch/${value.id}`,
+                        query: {
+                          owner:
+                            value.owners[0].name +
+                            (value.owners[1] ? value.owners[1].name : ""),
+                        },
+                      }}
+                      // as={`/switch/${value.id}`}
+                      key={value.id}
+                    >
+                      <Room number={value.id} owners={value.owners} />
+                    </S.StyledLink>
                   );
                 })
               ) : (

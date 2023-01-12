@@ -11,7 +11,14 @@ import { switchRoom } from "../../util/api/switch";
 export default function ToggleDoor() {
   const router = useRouter();
   const number: number = Number(router.query.index);
-
+  console.log(router);
+  const { owner } = router.query;
+  let newOwner;
+  if (typeof owner === "string") {
+    if (owner.length > 3)
+      newOwner = owner.slice(0, 3) + ", " + owner.slice(3, 6);
+    else newOwner = owner;
+  }
   const [state, setState] = React.useState<boolean>(false);
   const [text, setText] = React.useState<string>("CLOSE");
 
@@ -38,7 +45,7 @@ export default function ToggleDoor() {
           <Image src="/image/door.svg" width={110} height={110} alt="door" />
           <p>{number}</p>
         </S.Room>
-        <S.RoomName>내 방</S.RoomName>
+        <S.RoomName>{newOwner}의 방</S.RoomName>
         <S.StateText>{text}</S.StateText>
         <S.SwitchStyle
           size={"medium"}
