@@ -6,6 +6,7 @@ import {
   NotificationsNone,
   AssignmentOutlined,
   HourglassTopOutlined,
+  SendToMobileOutlined,
 } from "@mui/icons-material";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -17,8 +18,11 @@ function Footer() {
       case "/":
         setValue(0);
         break;
+      case "/share":
+        setValue(1);
+        break;
       case "/history":
-        setValue(3);
+        setValue(4);
         break;
     }
   }, []);
@@ -31,16 +35,20 @@ function Footer() {
           case 0:
             router.push("/");
             break;
-          case 3:
+          case 1:
+            router.push("/share");
+            break;
+          case 4:
             router.push("/history");
             break;
         }
       }}
     >
-      <S.Tab label="내 방" value={0} icon={<BsDoorClosed size={24} />} />
-      <S.Tab label="요청 목록" value={1} icon={<NotificationsNone />} />
-      <S.Tab label="대기 목록" value={2} icon={<HourglassTopOutlined />} />
-      <S.Tab label="기록 보기" value={3} icon={<AssignmentOutlined />} />
+      <S.Tab label="내 방" value={0} icon={<BsDoorClosed size={20} />} />
+      <S.Tab label="방 공유 요청" value={1} icon={<SendToMobileOutlined />} />
+      <S.Tab label="요청 목록" value={2} icon={<NotificationsNone />} />
+      <S.Tab label="대기 목록" value={3} icon={<HourglassTopOutlined />} />
+      <S.Tab label="기록 보기" value={4} icon={<AssignmentOutlined />} />
     </S.Footer>
   );
 }

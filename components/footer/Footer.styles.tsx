@@ -9,6 +9,9 @@ export const Footer = styled(BottomNavigation)`
 
 export const Tab = styled(BottomNavigationAction)`
   .css-imwso6-MuiBottomNavigationAction-label.Mui-selected {
-    font-size: 0.75rem !important;
+    font-size: 0.5rem !important;
+  }
+  .MuiBottomNavigationAction-iconOnly {
+    font-size: 0.5rem !important;
   }
 `;
