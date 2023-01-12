@@ -9,7 +9,7 @@ import {
   ReceiveRoomShare,
   RoomAccessLogType,
   SocketResType,
-} from "../../pages/type";
+} from "../../types/main.type"
 import { Close } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useMutation } from "react-query";
