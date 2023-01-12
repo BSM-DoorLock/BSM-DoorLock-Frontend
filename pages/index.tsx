@@ -53,7 +53,7 @@ export default function Home() {
             <Room
               number={myRoomInfo.id}
               owner1={myRoomInfo.owners[0].name}
-              owner2={myRoomInfo.owners[1].name}
+              owner2={myRoomInfo.owners[1].name}                                                                
             />
           )}
         </S.MyRoom>
