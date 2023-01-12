@@ -8,12 +8,12 @@ function Share() {
     <A.Section>
       <A.Title>방 공유 요청</A.Title>
       <S.Rooms>
-        <Room number={317} name1={"이현준"} name2={"권민서"} isShare />
-        <Room number={317} name1={"이현준"} name2={"권민서"} isShare />
-        <Room number={317} name1={"이현준"} name2={"권민서"} isShare />
-        <Room number={317} name1={"이현준"} name2={"권민서"} isShare />
-        <Room number={317} name1={"이현준"} name2={"권민서"} isShare />
-        <Room number={317} name1={"이현준"} name2={"권민서"} isShare />
+        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
+        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
+        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
+        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
+        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
+        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
       </S.Rooms>
     </A.Section>
   );

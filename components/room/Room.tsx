@@ -4,7 +4,12 @@ import { RoomPropsType } from "./type";
 import { useRecoilState } from "recoil";
 import { modalOpenState } from "../../store/ModalOpen";
 
-export default function Room({ number, name1, name2, isShare }: RoomPropsType) {
+export default function Room({
+  number,
+  owner1,
+  owner2,
+  isShare,
+}: RoomPropsType) {
   const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
   return (
     <>
@@ -20,7 +25,7 @@ export default function Room({ number, name1, name2, isShare }: RoomPropsType) {
             <span>{number}</span>
           </S.RoomInfo>
           <span className="owners">
-            {name1}, {name2}
+            {owner1}, {owner2}
           </span>
         </S.RoomContainer>
       ) : (
@@ -35,7 +40,7 @@ export default function Room({ number, name1, name2, isShare }: RoomPropsType) {
             <span>{number}</span>
           </S.RoomInfo>
           <span className="owners">
-            {name1}, {name2}
+            {owner1}, {owner2}
           </span>
         </S.ShareRoomContainer>
       )}
