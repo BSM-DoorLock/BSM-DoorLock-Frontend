@@ -10,6 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function StudentGraph({ data }: { data: StudentRankingType[] }) {
     const [studentRanking, setStudentRanking] = useState<GraphStudentRankingType>(init)
 
+    console.log("student", data);
     useEffect(()=>{
         const studentLabelsArr: string[] = [];
         const studentDatasetsArr: number[] = [];

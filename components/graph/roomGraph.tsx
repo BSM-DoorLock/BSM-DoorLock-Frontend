@@ -10,6 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function RoomGraph({ data }: { data: RoomRankingType[] }) {
      const [roomRanking, setRoomRanking] = useState<GraphRoomRankingType>(init);
 
+     console.log("room ", data);
     useEffect(()=>{
         const roomLabelsArr: number[] = [];
         const roomDatasetsArr: number[] = [];

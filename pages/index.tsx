@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import { RoomRankingType, RoomInfoType, StudentRankingType } from "../types/main.type";
 import { RoomInfoInit } from "../util/init";
-import Graph from "../components/graph/roomGraph";
 import { roomRanking, studentRanking } from "../util/api/ranking";
 import RoomGraph from "../components/graph/roomGraph";
 import StudentGraph from "../components/graph/studentGraph";
@@ -18,9 +17,8 @@ export default function Home() {
   const [mounted, setMounted] = React.useState(false);
   const [myRoomInfo, setMyRoomInfo] = React.useState<RoomInfoType>(RoomInfoInit);
   const [shareRoomInfo, setShareRoomInfo] = React.useState<RoomInfoType[]>([]);
-  const [graphSort, setGraphSort] = React.useState("3");
   const [roomRankingInfo, setRoomRankingInfo] = React.useState<RoomRankingType[]>([]);
-  const [studentRakingInfo, setStudentRakingInfo] = React.useState<StudentRankingType[]>([]);
+  const [studentRankingInfo, setStudentRankingInfo] = React.useState<StudentRankingType[]>([]);
 
   const myRoomQuery = useQuery("myRoom", () => myRoom(), {
     enabled: router.isReady && localStorage.accessToken !== undefined,
@@ -31,11 +29,11 @@ export default function Home() {
   });
 
   const roomRankingQuery = useQuery("roomRanking", () => roomRanking(), {
-    enabled: router.isReady,
+    enabled: router.isReady && localStorage.accessToken !== undefined,
   })
 
   const studentRankingQuery = useQuery("studentRanking", () => studentRanking(), {
-    enabled: router.isReady,
+    enabled: router.isReady && localStorage.accessToken !== undefined,
   })
 
   React.useEffect(() => {
@@ -46,23 +44,22 @@ export default function Home() {
   }, []);
 
   React.useEffect(() => {
+    console.log(shareRoomQuery);
+
     if (myRoomQuery.isSuccess) {
       setMyRoomInfo(myRoomQuery.data);
     }
-    if (shareRoomQuery.isSuccess && shareRoomQuery.data.length > 0) {
+    if (shareRoomQuery.isSuccess) {
       setShareRoomInfo(myRoomQuery.data);
     }
+
     if (roomRankingQuery.isSuccess) {
       setRoomRankingInfo(roomRankingQuery.data);
     }
     if (studentRankingQuery.isSuccess) {
-      setStudentRakingInfo(studentRankingQuery.data);
+      setStudentRankingInfo(studentRankingQuery.data);
     }
   }, [myRoomQuery, shareRoomQuery, roomRankingQuery, studentRankingQuery]);
-
-  const graphHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setGraphSort(event.target.value);
-  }
  
   return (
     <div>
@@ -90,7 +87,7 @@ export default function Home() {
           </S.Title>
           <div className="rooms">
             {mounted && localStorage.accessToken ? (
-              shareRoomQuery.isSuccess && shareRoomInfo.length > 0 ? (
+              shareRoomInfo.length > 0 ? (
                 shareRoomInfo.map((value: RoomInfoType, index) => {
                   return (
                     <Room number={value.id} owners={value.owners} key={index} />
@@ -108,15 +105,10 @@ export default function Home() {
           </div>
         </S.ShareRoom>
         <S.GraphContainer>
-          <select onChange={graphHandler} value={graphSort}>
-            <option value="3">전체</option>
-            <option value="1">1학년</option>
-            <option value="2">2학년</option>
-          </select>
           <S.GraphText>공유된 방 비율</S.GraphText>
-          <RoomGraph data={roomRankingInfo} />
+          {roomRankingInfo.length > 0 && <RoomGraph data={roomRankingInfo} />}
           <S.GraphText>요청한 방 비율</S.GraphText>
-          <StudentGraph data={studentRakingInfo} />
+          {studentRankingInfo.length > 0 && <StudentGraph data={studentRankingInfo} />}
         </S.GraphContainer>
       </S.MainSection>
     </div>
