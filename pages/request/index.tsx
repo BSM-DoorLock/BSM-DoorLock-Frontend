@@ -33,7 +33,7 @@ export default function Request() {
         <Title>공유 요청 기록</Title>
         {requestList.isSuccess ? (
           <>
-            {shareRequestList.map((value: ShareListType, index) => {
+            {shareRequestList.reverse().map((value: ShareListType, index) => {
               return (
                 <List name={value.owner.name} state={value.stat} key={index} shareId={value.id} />
               );

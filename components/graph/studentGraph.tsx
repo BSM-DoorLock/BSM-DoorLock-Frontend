@@ -27,7 +27,7 @@ export default function StudentGraph({ data }: { data: StudentRankingType[] }) {
                         .filter((_, i) => i >= 6);
 
     if (etcList.length) {
-      studentLabelsArr.push('기타');
+      studentLabelsArr.push('나머지');
       studentDatasetsArr.push(etcList.map(value => value.totalSharedRooms)
                         .reduce((a, b) => a + b, 0));
     }

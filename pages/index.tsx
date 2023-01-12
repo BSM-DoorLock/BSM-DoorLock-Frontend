@@ -44,7 +44,7 @@ export default function Home() {
   }, []);
 
   React.useEffect(() => {
-    console.log(shareRoomQuery);
+    console.log("main: ", shareRoomQuery);
 
     if (myRoomQuery.isSuccess) {
       setMyRoomInfo(myRoomQuery.data);
@@ -120,7 +120,7 @@ export default function Home() {
         <S.GraphContainer>
           <S.GraphText>공유된 방 비율</S.GraphText>
           {roomRankingInfo.length > 0 && <RoomGraph data={roomRankingInfo} />}
-          <S.GraphText>요청한 사람 비율</S.GraphText>
+          <S.GraphText>요청한 방 비율</S.GraphText>
           {studentRankingInfo.length > 0 && <StudentGraph data={studentRankingInfo} />}
         </S.GraphContainer>
       </S.MainSection>
