@@ -19,12 +19,12 @@ export const RoomContainer = styled(Button)`
 `
 
 export const RoomInfo = styled.div`
-    position: relative;
-    span{
-        position: absolute;
-        top: 25px;
-        left: 50%;
-        transform: translate(-50%);
-        font-size: 20px;
-    }
-`
+  position: relative;
+  span {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 20px;
+  }
+`;

@@ -10,6 +10,7 @@ export const Header = styled(AppBar)`
   background-color: black;
   position: fixed;
   top: 0;
+  z-index: 100000;
 `;
 
 export const StyledToolbar = styled(Toolbar)`

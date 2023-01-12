@@ -5,6 +5,9 @@ import { ThemeProvider } from "styled-components";
 import { RecoilRoot } from "recoil";
 import { QueryClient, QueryClientProvider } from "react-query";
 import AlertBar from "../components/alert/AlertBar";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
+import Modal from "../components/modal/Modal";
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -12,9 +15,12 @@ export default function App({ Component, pageProps }: AppProps) {
     <RecoilRoot>
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
+          <Header />
           <GlobalStyle />
           <AlertBar />
           <Component {...pageProps} />
+          <Footer />
+          <Modal />
         </QueryClientProvider>
       </ThemeProvider>
     </RecoilRoot>
