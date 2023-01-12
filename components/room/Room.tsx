@@ -9,7 +9,9 @@ export default function Room({
   owners,
   isShare,
 }: RoomPropsType) {
+  
   const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
+  console.log(owners);
   return (
     <>
       {!isShare ? (
@@ -25,10 +27,15 @@ export default function Room({
           </S.RoomInfo>
           <span className="owners">
             {/* {owner1 ? `${owner1}${owner2 && ","} ${owner2}` : "빈 방입니다."} */}
-            {owners.map((value, index) => {
-              if (index === 1) return `, ${value.name}`;
-              else return value.name;
-            })}
+            {owners.length > 2
+              ? [owners[0], owners[1]].map((value, index) => {
+                  if (index === 1) return `, ${value.name}`;
+                  else return value.name;
+                })
+              : owners.map((value, index) => {
+                  if (index === 1) return `, ${value.name}`;
+                  else return value.name;
+                })}
           </span>
         </S.RoomContainer>
       ) : (
