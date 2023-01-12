@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const DialogContents = styled.div`
   padding: 0 20px 20px 20px;
   text-align: center;
+  width: 234.54px;
 `;
 
 export const StyledDialog = styled(Dialog)`

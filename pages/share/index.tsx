@@ -1,19 +1,30 @@
 import React from "react";
 import Room from "../../components/room/Room";
 import * as A from "../../styles/all";
+import { useQuery } from "react-query";
 import * as S from "./share.styles";
+import { getAllRoomList } from "../../util/api/share";
+import { RoomListType } from "./share.type";
 
 function Share() {
+  const allRoomListQuery = useQuery("allRoomList", () => getAllRoomList());
+  console.log(allRoomListQuery);
   return (
     <A.Section>
       <A.Title>방 공유 요청</A.Title>
       <S.Rooms>
-        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
-        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
-        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
-        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
-        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
-        <Room number={317} owner1={"이현준"} owner2={"권민서"} isShare />
+        {allRoomListQuery.isSuccess &&
+          allRoomListQuery.data.map((item: RoomListType) => {
+            return (
+              <Room
+                key={item.id}
+                number={item.id}
+                isShare
+                owner1={item.owners[0] && item.owners[0].name}
+                owner2={item.owners[1] && item.owners[1].name}
+              />
+            );
+          })}
       </S.Rooms>
     </A.Section>
   );

@@ -5,30 +5,90 @@ import { modalOpenState } from "../../store/ModalOpen";
 import * as S from "./Modal.style";
 
 function Modal() {
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
+  const [modalState, setIsModalOpen] = useRecoilState(modalOpenState);
+  console.log(modalState.isEmpty);
   return (
-    <S.StyledDialog open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      <DialogTitle>공유 요청</DialogTitle>
-      <S.DialogContents>
-        이현준/권민서의 방(317호)에
-        <br /> 공유를 요청할까요??
-      </S.DialogContents>
-      <S.Buttons>
-        <S.StyledButton
-          variant="contained"
-          color="success"
-          onClick={() => setIsModalOpen(false)}
-        >
-          확인
-        </S.StyledButton>
-        <S.StyledButton
-          variant="contained"
-          color="error"
-          onClick={() => setIsModalOpen(false)}
-        >
-          취소
-        </S.StyledButton>
-      </S.Buttons>
+    <S.StyledDialog
+      open={modalState.isOpen}
+      onClose={() =>
+        setIsModalOpen({
+          ...modalState,
+          isOpen: false,
+          isEmpty: false,
+        })
+      }
+    >
+      {!modalState.isEmpty ? (
+        <>
+          <DialogTitle>공유 요청</DialogTitle>
+          <S.DialogContents>
+            {modalState.owner1}
+            {modalState.owner2 && "/"}
+            {modalState.owner2}의 방{`(${modalState.roomNo}호)`}
+            에
+            <br /> 공유를 요청할까요??
+          </S.DialogContents>
+          <S.Buttons>
+            <S.StyledButton
+              variant="contained"
+              color="success"
+              onClick={() =>
+                setIsModalOpen({
+                  ...modalState,
+                  isOpen: false,
+                })
+              }
+            >
+              확인
+            </S.StyledButton>
+            <S.StyledButton
+              variant="contained"
+              color="error"
+              onClick={() =>
+                setIsModalOpen({
+                  ...modalState,
+                  isOpen: false,
+                })
+              }
+            >
+              취소
+            </S.StyledButton>
+          </S.Buttons>
+        </>
+      ) : (
+        <>
+          <DialogTitle>공유 요청</DialogTitle>
+          <S.DialogContents>
+            빈 방에는 공유 요청을 할 수 없습니다!!!
+          </S.DialogContents>
+          <S.Buttons>
+            <S.StyledButton
+              variant="contained"
+              color="success"
+              onClick={() =>
+                setIsModalOpen({
+                  ...modalState,
+                  isOpen: false,
+                })
+              }
+            >
+              확인
+            </S.StyledButton>
+            <S.StyledButton
+              variant="contained"
+              color="error"
+              onClick={() =>
+                setIsModalOpen({
+                  ...modalState,
+                  isOpen: false,
+                })
+              }
+            >
+              취소
+            </S.StyledButton>
+          </S.Buttons>
+        </>
+      )}
     </S.StyledDialog>
   );
 }
