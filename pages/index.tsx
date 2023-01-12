@@ -27,7 +27,7 @@ export default function Home() {
   const [shareRoomInfo, setShareRoomInfo] = React.useState<RoomInfoType[]>([]);
 
   React.useEffect(() => {
-    console.log(shareRoomQuery);
+    console.log("my", myRoomQuery)
 
     if (myRoomQuery.isSuccess) {
       setMyRoomInfo(myRoomQuery.data);
@@ -53,7 +53,7 @@ export default function Home() {
             <Room
               number={myRoomInfo.id}
               owner1={myRoomInfo.owners[0].name}
-              owner2={myRoomInfo.owners[1].name}                                                                
+              owner2={myRoomInfo.owners[1].name}
             />
           )}
         </S.MyRoom>

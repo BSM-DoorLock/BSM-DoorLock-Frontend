@@ -31,7 +31,7 @@ export default function Room({
           </span>
         </S.RoomContainer>
       ) : (
-        <S.ShareRoomContainer
+        <S.RoomContainer
           onClick={() =>
             owner1
               ? setIsModalOpen({
@@ -64,7 +64,7 @@ export default function Room({
               ? `${owner1}${owner2 ? ", " + owner2 : ""}`
               : "빈 방입니다."}
           </span>
-        </S.ShareRoomContainer>
+        </S.RoomContainer>
       )}
     </>
   );
