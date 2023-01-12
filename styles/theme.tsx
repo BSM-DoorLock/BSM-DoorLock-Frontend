@@ -2,7 +2,7 @@ import { DefaultTheme, keyframes } from "styled-components";
 
 const size = {
   mobile: "612px",
-  tablet: "900px",
+  tablet: "768px",
   laptop: "1200px",
   desktop: "1800px",
 };
