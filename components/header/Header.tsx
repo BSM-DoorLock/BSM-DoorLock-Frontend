@@ -14,7 +14,6 @@ function Header() {
   const userQuery = useQuery("user", () => getUser(), {
     enabled: getLocalStorage() && localStorage.accessToken !== undefined,
   });
-  console.log(userQuery);
 
   const logoutMutation = useMutation(() => logout());
   useEffect(() => {
@@ -67,7 +66,7 @@ function Header() {
             </S.StyledMenu>
           </>
         ) : (
-          <S.Login href="https://auth.bssm.kro.kr/oauth?clientId=d22c2333&redirectURI=http://localhost:3000/oauth/bsm">
+          <S.Login href="https://auth.bssm.kro.kr/oauth?clientId=d22c2333&redirectURI=https://door.bssm.kro.kr/oauth/bsm">
             LOGIN
           </S.Login>
         )}

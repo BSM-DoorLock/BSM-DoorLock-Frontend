@@ -27,3 +27,14 @@ export interface ReceiveRoomShare {
   guest: UserType;
   shareId: number;
 }
+
+export interface RoomRankingType{
+  id: number;
+  owners: UserType[];
+  totalGuests: number;
+}
+
+export interface StudentRankingType{
+  student: UserType;
+  totalSharedRooms: number;
+}

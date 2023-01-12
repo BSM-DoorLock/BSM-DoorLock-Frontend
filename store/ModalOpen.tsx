@@ -1,14 +1,14 @@
 import { atom } from "recoil";
+import { UserType } from "../types/main.type";
 
 export const modalOpenState = atom<modalOpenStateType>({
   key: "modalOpenState",
   default: {
     isOpen: false,
     isEmpty: false,
-    owner1: undefined,
-    owner2: undefined,
+    owners: [],
     roomNo: 0,
-    ownerId: "",
+    requestId: "",
   },
 });
 
@@ -23,9 +23,8 @@ export const requestModalOpenState = atom({
 
 interface modalOpenStateType {
   isOpen: boolean;
-  owner1: string | undefined;
-  owner2: string | undefined;
+  owners: UserType[];
   roomNo: number;
   isEmpty: boolean;
-  ownerId?: string;
+  requestId?: string;
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { Section } from "../styles/all";
+import { Section } from "../all";
 
 export const MainSection = styled(Section)`
   padding: 56px 11%;
@@ -94,3 +94,21 @@ export const Empty = styled.div`
     }
   }
 `;
+
+export const GraphContainer = styled.div`
+  margin-top: 30px;
+
+  select{
+    width: 70px;
+  }
+
+  div {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+`
+
+export const GraphText = styled.p`
+  margin-top: 50px;
+  margin-bottom: 40px;
+`

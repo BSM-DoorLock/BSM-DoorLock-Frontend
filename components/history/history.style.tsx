@@ -17,7 +17,7 @@ export const HistoryContainer = styled.div`
 `;
 
 export const Name = styled.span`
-  font-size: 15px;
+  font-size: 13px;
   margin-right: 10px;
   @media ${({ theme }) => theme.size.tablet} {
     font-size: 1.5rem;
