@@ -1,5 +1,5 @@
 export interface RoomPropsType {
     number: number;
-    name1: string;
-    name2: string;
+    owner1: string;
+    owner2: string;
 }
