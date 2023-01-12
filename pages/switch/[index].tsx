@@ -16,8 +16,10 @@ export default function ToggleDoor() {
   if (typeof owner === "string") {
     if (owner.length > 3)
       newOwner = owner.slice(0, 3) + ", " + owner.slice(3, 6);
-    else newOwner = owner;
+    else if(owner.length > 0) newOwner = owner;
   }
+  else newOwner = "나";
+  
   const [state, setState] = React.useState<boolean>(false);
   const [text, setText] = React.useState<string>("CLOSE");
 
