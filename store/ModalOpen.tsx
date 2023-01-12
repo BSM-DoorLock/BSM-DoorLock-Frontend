@@ -8,6 +8,7 @@ export const modalOpenState = atom<modalOpenStateType>({
     owner1: undefined,
     owner2: undefined,
     roomNo: 0,
+    ownerId: "",
   },
 });
 
@@ -17,4 +18,5 @@ interface modalOpenStateType {
   owner2: string | undefined;
   roomNo: number;
   isEmpty: boolean;
+  ownerId?: string;
 }

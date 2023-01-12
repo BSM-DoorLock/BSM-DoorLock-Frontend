@@ -3,10 +3,16 @@ import { Button, Dialog, DialogTitle } from "@mui/material";
 import { useRecoilState } from "recoil";
 import { modalOpenState } from "../../store/ModalOpen";
 import * as S from "./Modal.style";
+import { useMutation } from "react-query";
+import { shareRequest } from "../../util/api/share";
 
 function Modal() {
   const [modalState, setIsModalOpen] = useRecoilState(modalOpenState);
-  console.log(modalState.isEmpty);
+  console.log(modalState.ownerId);
+  const shareRequestMutation = useMutation(() =>
+    shareRequest(modalState.ownerId)
+  );
+  console.log(shareRequestMutation);
   return (
     <S.StyledDialog
       open={modalState.isOpen}
@@ -32,12 +38,13 @@ function Modal() {
             <S.StyledButton
               variant="contained"
               color="success"
-              onClick={() =>
+              onClick={() => {
+                shareRequestMutation.mutate();
                 setIsModalOpen({
                   ...modalState,
                   isOpen: false,
-                })
-              }
+                });
+              }}
             >
               확인
             </S.StyledButton>

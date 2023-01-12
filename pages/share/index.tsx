@@ -8,7 +8,6 @@ import { RoomListType } from "./share.type";
 
 function Share() {
   const allRoomListQuery = useQuery("allRoomList", () => getAllRoomList());
-  console.log(allRoomListQuery);
   return (
     <A.Section>
       <A.Title>방 공유 요청</A.Title>
@@ -22,6 +21,7 @@ function Share() {
                 isShare
                 owner1={item.owners[0] && item.owners[0].name}
                 owner2={item.owners[1] && item.owners[1].name}
+                ownerId={item.owners[0] && item.owners[0].studentId}
               />
             );
           })}

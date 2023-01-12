@@ -10,6 +10,7 @@ export default function Room({
   owner1,
   owner2,
   isShare,
+  ownerId,
 }: RoomPropsType) {
   const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
   return (
@@ -39,9 +40,11 @@ export default function Room({
                   owner1: owner1 && owner1,
                   owner2: owner2 && owner2,
                   roomNo: number,
+                  ownerId: ownerId,
                 })
               : setIsModalOpen({
                   ...isModalOpen,
+                  ownerId: ownerId,
                   isOpen: true,
                   isEmpty: true,
                 })
