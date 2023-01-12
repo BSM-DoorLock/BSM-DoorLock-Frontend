@@ -1,5 +1,5 @@
 import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { StudentRankingType } from "../../types/main.type";
 import { useEffect, useState } from "react";
 import { GraphStudentRankingType } from "./graph.type";
@@ -31,7 +31,6 @@ export default function StudentGraph({ data }: { data: StudentRankingType[] }) {
       studentDatasetsArr.push(etcList.map(value => value.totalSharedRooms)
                         .reduce((a, b) => a + b, 0));
     }
-
     setStudentRanking((prev) => ({
       ...prev,
       labels: studentLabelsArr,

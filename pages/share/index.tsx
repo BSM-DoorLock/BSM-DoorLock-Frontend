@@ -22,7 +22,6 @@ function Share() {
                 number={item.id}
                 isShare
                 owners={item.owners}
-                ownerId={item.owners[0] && item.owners[0].studentId}
               />
             );
           })}

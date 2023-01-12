@@ -6,12 +6,12 @@ export const getAllRoomList = async (): Promise<any> => {
 };
 
 export const shareRequest = async (
-  ownerId: string | undefined
+  requestId: string | undefined
 ): Promise<any> => {
   return (
     await instance.post(
       "/room/share/ask",
-      { ownerStudentId: ownerId },
+      { ownerStudentId: requestId },
       getAccessToken()
     )
   ).data;

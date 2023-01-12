@@ -21,7 +21,7 @@ export default function List({
     <S.ListContainer
       state={state}
       onClick={() => {
-        if (state === "WAITING") {
+        if (isRequest && state === "WAITING") {
           setRequestModalState({
             ...requestModalState,
             isOpen: true,

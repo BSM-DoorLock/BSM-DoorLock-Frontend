@@ -9,8 +9,18 @@ import { shareRequest } from "../../util/api/share";
 function Modal() {
   const [modalState, setIsModalOpen] = useRecoilState(modalOpenState);
   const shareRequestMutation = useMutation(() =>
-    shareRequest(modalState.ownerId)
+    shareRequest(modalState.requestId)
   );
+
+  const requestIdHandler = (e: React.ChangeEvent<HTMLSelectElement> ) => {
+    console.log(modalState);
+    const value = e.target.value;
+    setIsModalOpen({
+      ...modalState,
+      requestId: value,
+    })
+  }
+
   return (
     <S.StyledDialog
       open={modalState.isOpen}
@@ -26,11 +36,18 @@ function Modal() {
         <>
           <DialogTitle>공유 요청</DialogTitle>
           <S.DialogContents>
-            {modalState.owner1}
-            {modalState.owner2 && "/"}
-            {modalState.owner2}의 방{`(${modalState.roomNo}호)`}
-            에
-            <br /> 공유를 요청할까요??
+          {modalState.owners.map((value, index) => {
+              if (index === 1) return `/${value.name}`;
+              else return value.name;
+            })}
+            의 방({modalState.roomNo}호)에
+            <br />누구에게 공유를 요청할까요?
+            <S.StyleSelect onChange={requestIdHandler}>
+              <option value={""}>선택</option>
+              {modalState.owners.map((value, index)=> {
+                return <option key={index} value={value.studentId}>{value.name}</option>
+              })}
+            </S.StyleSelect>
           </S.DialogContents>
           <S.Buttons>
             <S.StyledButton
