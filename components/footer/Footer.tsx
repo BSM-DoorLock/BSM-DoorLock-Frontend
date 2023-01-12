@@ -56,11 +56,11 @@ function Footer() {
         }
       }}
     >
-      <S.Tab label="내 방" value={0} icon={<DoorBackOutlined />} />
-      <S.Tab label="방 공유 요청" value={1} icon={<SendToMobileOutlined />} />
-      <S.Tab label="요청 목록" value={2} icon={<NotificationsNone />} />
-      <S.Tab label="대기 목록" value={3} icon={<HourglassTopOutlined />} />
-      <S.Tab label="기록 보기" value={4} icon={<AssignmentOutlined />} />
+      <S.Tab  value={4} icon={<AssignmentOutlined />} />
+      <S.Tab  value={0} icon={<DoorBackOutlined />} />
+      <S.Tab  value={1} icon={<SendToMobileOutlined />} />
+      <S.Tab  value={2} icon={<NotificationsNone />} />
+      <S.Tab  value={3} icon={<HourglassTopOutlined />} />
     </S.Footer>
   );
 }

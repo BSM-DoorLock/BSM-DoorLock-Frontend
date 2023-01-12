@@ -40,6 +40,7 @@ export const ShareRoom = styled(MyRoom)`
   /* p {
     position: fixed;
   } */
+  min-width: 200px;
   .rooms {
     position: relative;
     display: flex;

@@ -57,7 +57,7 @@ export default function Home() {
   }, []);
 
   React.useEffect(() => {
-    console.log(shareRoomQuery);
+    console.log("main: ", shareRoomQuery);
 
     if (myRoomQuery.isSuccess) {
       setMyRoomInfo(myRoomQuery.data);
