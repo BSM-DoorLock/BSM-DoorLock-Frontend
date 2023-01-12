@@ -1,28 +1,29 @@
-export interface UserType{
-    isUser: boolean;
-    name: string;
-    studentId: string;
+export interface UserType {
+  isUser: boolean;
+  name: string;
+  studentId: string;
 }
 
-export interface RoomInfoType{
-    id: number;
-    isOpen: boolean;
-    owners: UserType[];
-    guests: UserType[];
-};
+export interface RoomInfoType {
+  id: number;
+  isOpen: boolean;
+  owners: UserType[];
+  guests: UserType[];
+}
 
 export enum SocketResType {
   ROOM_ACCESS,
-  RECEIVE_ROOM_SHARE
+  RECEIVE_ROOM_SHARE,
 }
 
 export interface RoomAccessLogType {
-  roomId: number,
-  user: UserType,
-  isOpen: boolean
+  roomId: number;
+  user: UserType;
+  isOpen: boolean;
 }
 
 export interface ReceiveRoomShare {
-  owner: UserType,
-  guest: UserType
+  owner: UserType;
+  guest: UserType;
+  shareId: number;
 }

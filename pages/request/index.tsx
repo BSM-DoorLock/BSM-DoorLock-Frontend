@@ -35,7 +35,7 @@ export default function Request() {
           <>
             {shareRequestList.map((value: ShareListType, index) => {
               return (
-                <List name={value.owner.name} state={value.stat} key={index} />
+                <List name={value.owner.name} state={value.stat} key={index} shareId={value.id} />
               );
             })}
           </>

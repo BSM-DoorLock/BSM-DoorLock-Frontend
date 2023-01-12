@@ -7,9 +7,13 @@ import { ShareListType } from "../../types/request.type";
 import { getReceiveList } from "../../util/api/receive";
 import { Section, Title } from "../../styles/all";
 import Loading from "../../components/loading/Loading";
+import { useRecoilValue } from "recoil";
+import { requestModalOpenState } from "../../store/ModalOpen";
 
 export default function Request() {
   const router = useRouter();
+
+  const requestModalState = useRecoilValue(requestModalOpenState);
 
   const receiveList = useQuery("request", () => getReceiveList(), {
     enabled: router.isReady,
@@ -20,12 +24,12 @@ export default function Request() {
   >([]);
 
   React.useEffect(() => {
-    console.log("receive: ", receiveList);
-
     if (receiveList.isSuccess) {
       setShareReceiveList(receiveList.data);
     }
-  }, [receiveList]);
+  }, [receiveList, requestModalState]);
+
+  console.log(shareReceiveList);
 
   return (
     <S.RequestContainer>
@@ -33,9 +37,15 @@ export default function Request() {
         <Title>받은 공유 요청 </Title>
         {receiveList.isSuccess ? (
           <>
-            {shareReceiveList.map((value: ShareListType, index) => {
+            {shareReceiveList.reverse().map((value: ShareListType, index) => {
               return (
-                <List name={value.owner.name} state={value.stat} key={index} />
+                <List
+                  name={value.guest.name}
+                  state={value.stat}
+                  shareId={value.id}
+                  key={index}
+                  isRequest
+                />
               );
             })}
           </>
