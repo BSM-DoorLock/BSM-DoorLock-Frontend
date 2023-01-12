@@ -10,32 +10,37 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function RoomGraph({ data }: { data: RoomRankingType[] }) {
   const [roomRanking, setRoomRanking] = useState<GraphRoomRankingType>(init);
 
-  useEffect(()=>{
+  useEffect(() => {
     const roomLabelsArr: string[] = [];
     const roomDatasetsArr: number[] = [];
 
-    data.filter(value => value.totalGuests > 0)
-        .filter((_, i) => i < 6)
-        .forEach(value => {
-          roomLabelsArr.push(`${value.id}호 ${value.owners.map(owner => owner.name).join(', ')}`);
-          roomDatasetsArr.push(value.totalGuests);
-        });
+    data
+      .filter((value) => value.totalGuests > 0)
+      .filter((_, i) => i < 6)
+      .forEach((value) => {
+        roomLabelsArr.push(
+          `${value.id}호 ${value.owners.map((owner) => owner.name).join(", ")}`
+        );
+        roomDatasetsArr.push(value.totalGuests);
+      });
 
-    const etcList = data.filter(value => value.totalGuests > 0)
-                        .filter((_, i) => i >= 6);
-    
+    const etcList = data
+      .filter((value) => value.totalGuests > 0)
+      .filter((_, i) => i >= 6);
+
     if (etcList.length) {
-      roomLabelsArr.push('기타');
-      roomDatasetsArr.push(etcList.map(value => value.totalGuests)
-                      .reduce((a, b) => a + b, 0));
+      roomLabelsArr.push("기타");
+      roomDatasetsArr.push(
+        etcList.map((value) => value.totalGuests).reduce((a, b) => a + b, 0)
+      );
     }
 
     setRoomRanking((prev) => ({
       ...prev,
       labels: roomLabelsArr,
       datasets: roomDatasetsArr,
-    }))
-  }, [])
+    }));
+  }, []);
 
   const testData = {
     labels: roomRanking.labels,

@@ -40,7 +40,7 @@ export const Logout = styled(Button)`
 `;
 
 export const StyledMenu = styled(Menu)`
-  .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  .MuiPaper-elevation8 {
     top: 56px !important;
     right: 0;
     left: unset !important;
