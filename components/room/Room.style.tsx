@@ -18,6 +18,12 @@ export const RoomContainer = styled(Button)`
     }
 `
 
+export const ShareRoomContainer = styled(RoomContainer)`
+  width: unset;
+  height: unset;
+  padding: 10px;
+`;
+
 export const RoomInfo = styled.div`
   position: relative;
   span {
