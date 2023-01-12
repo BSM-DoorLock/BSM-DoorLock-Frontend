@@ -1,15 +1,44 @@
-import Image from "next/image"
-import * as S from './Room.style'
-import { RoomPropsType } from "./type"
+import Image from "next/image";
+import * as S from "./Room.style";
+import { RoomPropsType } from "./type";
+import { useRecoilState } from "recoil";
+import { modalOpenState } from "../../store/ModalOpen";
 
-export default function Room({ number, name1, name2 }: RoomPropsType){
-    return(
+export default function Room({ number, name1, name2, isShare }: RoomPropsType) {
+  const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
+  return (
+    <>
+      {!isShare ? (
         <S.RoomContainer>
-            <S.RoomInfo>
-                <Image src={"/image/door.svg"} alt="icon" width={130} height={130} />
-                <span>{number}</span>
-            </S.RoomInfo>
-            <span className="owners">{name1}, {name2}</span>
+          <S.RoomInfo>
+            <Image
+              src={"/image/door.svg"}
+              alt="icon"
+              width={130}
+              height={130}
+            />
+            <span>{number}</span>
+          </S.RoomInfo>
+          <span className="owners">
+            {name1}, {name2}
+          </span>
         </S.RoomContainer>
-    )
+      ) : (
+        <S.ShareRoomContainer onClick={() => setIsModalOpen(true)}>
+          <S.RoomInfo>
+            <Image
+              src={"/image/door.svg"}
+              alt="icon"
+              width={130}
+              height={130}
+            />
+            <span>{number}</span>
+          </S.RoomInfo>
+          <span className="owners">
+            {name1}, {name2}
+          </span>
+        </S.ShareRoomContainer>
+      )}
+    </>
+  );
 }
