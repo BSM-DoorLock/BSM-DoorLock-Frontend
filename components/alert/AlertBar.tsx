@@ -5,7 +5,7 @@ const io = require('socket.io-client');
 import { alertOpenState } from "../../store/AlertOpen";
 import { useRecoilState } from "recoil";
 import * as S from "./AlertBar.styles";
-import { ReceiveRoomShare, RoomAccessLogType, SocketResType } from "../../pages/type";
+import { ReceiveRoomShare, RoomAccessLogType, SocketResType } from "../../types/main.type";
 
 function AlertBar() {
   const [mounted, setMounted] = useState(false);

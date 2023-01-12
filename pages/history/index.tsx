@@ -1,11 +1,11 @@
 import History from "../../components/history/history";
-import * as S from "./history.style";
+import * as S from "../../styles/history/history.style";
 import * as A from "../../styles/all";
 import { getHistory } from "../../util/api/history";
 import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { MyRoomLogListType } from "./type";
+import { MyRoomLogListType } from "../../types/history.type";
 
 export default function HistoryList() {
   

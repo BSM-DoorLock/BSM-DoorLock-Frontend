@@ -1,13 +1,12 @@
 import Room from "../components/room/Room";
-import * as S from "./main.styles";
+import * as S from "../styles/main/main.styles";
 import { AddToPhotos, SearchOff } from "@mui/icons-material";
 import { useQuery } from "react-query";
 import { myRoom, shareRoom } from "../util/api/main";
 import { useRouter } from "next/router";
 import React from "react";
-import { RoomInfoType } from "./type";
-import { RoomInfoInit } from "./init";
-import Link from "next/link";
+import { RoomInfoType } from "../types/main.type";
+import { RoomInfoInit } from "../util/init";
 
 export default function Home() {
   const [mounted, setMounted] = React.useState(false);
@@ -85,6 +84,7 @@ export default function Home() {
             )}
           </div>
         </S.ShareRoom>
+        
       </S.MainSection>
     </div>
   );

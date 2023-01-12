@@ -1,4 +1,4 @@
-import { UserType } from "../type";
+import { UserType } from "./main.type";
 
 export interface MyRoomLogListType{
     id: number;

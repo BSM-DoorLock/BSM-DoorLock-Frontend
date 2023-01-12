@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { Section } from "../styles/all";
+import { Section } from "../all";
 
 export const MainSection = styled(Section)`
   padding: 56px 11%;

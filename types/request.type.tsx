@@ -1,4 +1,4 @@
-import { RoomInfoType, UserType } from "../type";
+import { RoomInfoType, UserType } from "./main.type";
 
 export interface ShareListType{
     id: number;
