@@ -1,9 +1,5 @@
 import Room from "../components/room/Room";
-import styled from "styled-components";
-import Footer from "../components/footer/Footer";
 import * as S from "./main.styles";
-import * as A from "../styles/all";
-import Header from "../components/header/Header";
 import { AddToPhotos, SearchOff } from "@mui/icons-material";
 import { useQuery } from "react-query";
 import { myRoom, shareRoom } from "../util/api/main";
@@ -14,19 +10,26 @@ import { RoomInfoInit } from "./init";
 import Link from "next/link";
 
 export default function Home() {
+  const [mounted, setMounted] = React.useState(false);
   const router = useRouter();
   const myRoomQuery = useQuery("myRoom", () => myRoom(), {
-    enabled: router.isReady,
+    enabled: router.isReady && localStorage.accessToken !== undefined,
   });
 
   const shareRoomQuery = useQuery("shareRoom", () => shareRoom(), {
-    enabled: router.isReady,
+    enabled: router.isReady && localStorage.accessToken !== undefined,
   });
 
   const [myRoomInfo, setMyRoomInfo] =
     React.useState<RoomInfoType>(RoomInfoInit);
   const [shareRoomInfo, setShareRoomInfo] = React.useState<RoomInfoType[]>([]);
 
+  React.useEffect(() => {
+    setMounted(true);
+    return () => {
+      setMounted(false);
+    };
+  }, []);
   React.useEffect(() => {
     console.log(shareRoomQuery);
 
@@ -50,7 +53,7 @@ export default function Home() {
           <S.Title>
             <p>내 방</p>
           </S.Title>
-          {!myRoomQuery.isLoading && (
+          {myRoomQuery.isSuccess ? (
             <S.StyledLink href={`/switch/${myRoomInfo.id}`}>
               <Room
                 number={myRoomInfo.id}
@@ -58,6 +61,8 @@ export default function Home() {
                 owner2={myRoomInfo.owners[1].name}
               />
             </S.StyledLink>
+          ) : (
+            <div>로그인 후 이용 가능합니다!</div>
           )}
         </S.MyRoom>
         <S.ShareRoom>
@@ -66,7 +71,7 @@ export default function Home() {
             <AddToPhotos />
           </S.Title>
           <div className="rooms">
-            {!shareRoomQuery.isLoading && shareRoomInfo.length > 0 ? (
+            {mounted && localStorage.accessToken ? (shareRoomQuery.isSuccess && shareRoomInfo.length > 0 ? (
               shareRoomInfo.map((value: RoomInfoType, index) => {
                 return (
                   <Room
@@ -82,7 +87,7 @@ export default function Home() {
                 <SearchOff />
                 <p>공유된 방이 없습니다</p>
               </S.Empty>
-            )}
+            )) : <span>로그인 후 이용 가능합니다~</span>}
           </div>
         </S.ShareRoom>
       </S.MainSection>
