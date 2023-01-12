@@ -101,6 +101,11 @@ export const GraphContainer = styled.div`
   select{
     width: 70px;
   }
+
+  div {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 `
 
 export const GraphText = styled.p`

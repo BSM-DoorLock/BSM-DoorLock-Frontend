@@ -10,26 +10,32 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function RoomGraph({ data }: { data: RoomRankingType[] }) {
   const [roomRanking, setRoomRanking] = useState<GraphRoomRankingType>(init);
 
-  useEffect(() => {
-    const roomLabelsArr: number[] = [];
+  useEffect(()=>{
+    const roomLabelsArr: string[] = [];
     const roomDatasetsArr: number[] = [];
 
-    data.forEach((value: RoomRankingType) => {
-      if (value.totalGuests > 0) {
-        roomLabelsArr.push(value.id);
-        roomDatasetsArr.push(value.totalGuests);
-      }
-    });
+    data.filter(value => value.totalGuests > 0)
+        .filter((_, i) => i < 6)
+        .forEach(value => {
+          roomLabelsArr.push(`${value.id}호 ${value.owners.map(owner => owner.name).join(', ')}`);
+          roomDatasetsArr.push(value.totalGuests);
+        });
 
-    roomDatasetsArr.sort((a, b) => b - a);
-    roomLabelsArr.sort((a, b) => b - a);
+    const etcList = data.filter(value => value.totalGuests > 0)
+                        .filter((_, i) => i >= 6);
+    
+    if (etcList.length) {
+      roomLabelsArr.push('기타');
+      roomDatasetsArr.push(etcList.map(value => value.totalGuests)
+                      .reduce((a, b) => a + b, 0));
+    }
 
     setRoomRanking((prev) => ({
       ...prev,
       labels: roomLabelsArr,
       datasets: roomDatasetsArr,
-    }));
-  }, []);
+    }))
+  }, [])
 
   const testData = {
     labels: roomRanking.labels,
@@ -43,6 +49,7 @@ export default function RoomGraph({ data }: { data: RoomRankingType[] }) {
           "rgba(75, 192, 192, 0.2)",
           "rgba(153, 102, 255, 0.2)",
           "rgba(255, 159, 64, 0.2)",
+          "rgba(128, 128, 128, 0.2)",
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
@@ -51,6 +58,7 @@ export default function RoomGraph({ data }: { data: RoomRankingType[] }) {
           "rgba(75, 192, 192, 1)",
           "rgba(153, 102, 255, 1)",
           "rgba(255, 159, 64, 1)",
+          "rgba(128, 128, 128, 1)",
         ],
         borderWidth: 1,
       },
