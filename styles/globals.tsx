@@ -31,10 +31,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
   
-  p {
-    font-size: 35px;
-    /* margin-bottom: 20px; */
-  }
 `;
 
 export default GlobalStyle;
