@@ -8,11 +8,9 @@ import { shareRequest } from "../../util/api/share";
 
 function Modal() {
   const [modalState, setIsModalOpen] = useRecoilState(modalOpenState);
-  console.log(modalState.ownerId);
   const shareRequestMutation = useMutation(() =>
     shareRequest(modalState.ownerId)
   );
-  console.log(shareRequestMutation);
   return (
     <S.StyledDialog
       open={modalState.isOpen}

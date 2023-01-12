@@ -8,6 +8,7 @@ import AlertBar from "../components/alert/AlertBar";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import Modal from "../components/modal/Modal";
+import RequestModal from "../components/requestModal/requestModal";
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
           <Footer />
           <Modal />
+          <RequestModal />
         </QueryClientProvider>
       </ThemeProvider>
     </RecoilRoot>

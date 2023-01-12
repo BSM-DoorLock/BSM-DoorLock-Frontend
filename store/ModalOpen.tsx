@@ -12,6 +12,15 @@ export const modalOpenState = atom<modalOpenStateType>({
   },
 });
 
+export const requestModalOpenState = atom({
+  key: "requestModalOpenState",
+  default: {
+    isOpen: false,
+    shareId: 0,
+    guestName: "",
+  },
+});
+
 interface modalOpenStateType {
   isOpen: boolean;
   owner1: string | undefined;
