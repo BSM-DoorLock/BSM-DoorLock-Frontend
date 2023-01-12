@@ -19,8 +19,7 @@ function Share() {
                 key={item.id}
                 number={item.id}
                 isShare
-                owner1={item.owners[0] && item.owners[0].name}
-                owner2={item.owners[1] && item.owners[1].name}
+                owners={item.owners}
                 ownerId={item.owners[0] && item.owners[0].studentId}
               />
             );

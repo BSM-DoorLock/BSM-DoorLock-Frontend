@@ -3,12 +3,10 @@ import * as S from "./Room.style";
 import { RoomPropsType } from "./type";
 import { useRecoilState } from "recoil";
 import { modalOpenState } from "../../store/ModalOpen";
-import { isTemplateExpression } from "typescript";
 
 export default function Room({
   number,
-  owner1,
-  owner2,
+  owners,
   isShare,
   ownerId,
 }: RoomPropsType) {
@@ -27,18 +25,22 @@ export default function Room({
             <span>{number}</span>
           </S.RoomInfo>
           <span className="owners">
-            {owner1 ? `${owner1}${owner2 && ","} ${owner2}` : "빈 방입니다."}
+            {/* {owner1 ? `${owner1}${owner2 && ","} ${owner2}` : "빈 방입니다."} */}
+            {owners.map((value, index) => {
+              if (index === 1) return `, ${value.name}`;
+              else return value.name;
+            })}
           </span>
         </S.RoomContainer>
       ) : (
         <S.RoomContainer
           onClick={() =>
-            owner1
+            owners
               ? setIsModalOpen({
                   ...isModalOpen,
                   isOpen: true,
-                  owner1: owner1 && owner1,
-                  owner2: owner2 && owner2,
+                  owner1: owners[0] && owners[0].name,
+                  owner2: owners[1] && owners[1].name,
                   roomNo: number,
                   ownerId: ownerId,
                 })
@@ -60,8 +62,14 @@ export default function Room({
             <span>{number}</span>
           </S.RoomInfo>
           <span className="owners">
-            {owner1
+            {/* {owner1
               ? `${owner1}${owner2 ? ", " + owner2 : ""}`
+              : "빈 방입니다."} */}
+            {owners.length > 0
+              ? owners.map((value, index) => {
+                  if (index === 1) return `, ${value.name}`;
+                  else return value.name;
+                })
               : "빈 방입니다."}
           </span>
         </S.RoomContainer>
