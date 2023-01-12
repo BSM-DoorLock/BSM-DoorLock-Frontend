@@ -4,14 +4,25 @@ import React from "react";
 import Image from "next/image";
 import * as S from "./style";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { switchRoom } from "../../util/api/switch";
 
 export default function ToggleDoor() {
+
+  const router = useRouter();
+  const number: number = Number(router.query.index);
+
   const [state, setState] = React.useState<boolean>(false);
   const [text, setText] = React.useState<string>("CLOSE");
 
   const handleSwitch = () => {
     if (state) setText("CLOSE");
     else setText("OPEN");
+    try{
+      switchRoom(number, !state);
+    }catch(error){
+      console.log(error);
+    }
     setState((prev) => !prev);
   };
 
@@ -25,7 +36,7 @@ export default function ToggleDoor() {
       <S.SwitchContainer>
         <S.Room>
           <Image src="/image/door.svg" width={150} height={150} alt="door" />
-          <p>317호</p>
+          <p>{number}호</p>
         </S.Room>
         <S.RoomName>내 방</S.RoomName>
         <S.StateText>{text}</S.StateText>
