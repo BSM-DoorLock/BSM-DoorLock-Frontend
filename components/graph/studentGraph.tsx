@@ -8,26 +8,36 @@ import { init } from "./util";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function StudentGraph({ data }: { data: StudentRankingType[] }) {
-    const [studentRanking, setStudentRanking] = useState<GraphStudentRankingType>(init)
+  const [studentRanking, setStudentRanking] = useState<GraphStudentRankingType>(init)
 
-    console.log("student", data);
-    useEffect(()=>{
-        const studentLabelsArr: string[] = [];
-        const studentDatasetsArr: number[] = [];
+  useEffect(()=>{
+    const studentLabelsArr: string[] = [];
+    const studentDatasetsArr: number[] = [];
 
-        data.forEach((value: StudentRankingType) => {
+    data.filter(value => value.totalSharedRooms > 0)
+        .filter((_, i) => i < 6)
+        .forEach(value => {
           if(value.totalSharedRooms > 0) {
               studentLabelsArr.push(value.student.name);
               studentDatasetsArr.push(value.totalSharedRooms);
           }
-      })
+        });
+    
+    const etcList = data.filter(value => value.totalSharedRooms > 0)
+                        .filter((_, i) => i >= 6);
 
-      setStudentRanking((prev) => ({
-          ...prev,
-          labels: studentLabelsArr,
-          datasets: studentDatasetsArr,
-      }))
-    }, [])
+    if (etcList.length) {
+      studentLabelsArr.push('기타');
+      studentDatasetsArr.push(etcList.map(value => value.totalSharedRooms)
+                        .reduce((a, b) => a + b, 0));
+    }
+
+    setStudentRanking((prev) => ({
+      ...prev,
+      labels: studentLabelsArr,
+      datasets: studentDatasetsArr,
+    }))
+  }, [])
 
   const testData = {
     labels: studentRanking.labels,
@@ -41,6 +51,7 @@ export default function StudentGraph({ data }: { data: StudentRankingType[] }) {
           "rgba(75, 192, 192, 0.2)",
           "rgba(153, 102, 255, 0.2)",
           "rgba(255, 159, 64, 0.2)",
+          "rgba(128, 128, 128, 0.2)",
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
@@ -49,6 +60,7 @@ export default function StudentGraph({ data }: { data: StudentRankingType[] }) {
           "rgba(75, 192, 192, 1)",
           "rgba(153, 102, 255, 1)",
           "rgba(255, 159, 64, 1)",
+          "rgba(128, 128, 128, 1)",
         ],
         borderWidth: 1,
       },
