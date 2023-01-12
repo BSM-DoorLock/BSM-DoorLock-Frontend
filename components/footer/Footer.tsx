@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./Footer.styles";
 import Image from "next/image";
-import { BsDoorClosed } from "react-icons/bs";
 import {
   NotificationsNone,
   AssignmentOutlined,
   HourglassTopOutlined,
   SendToMobileOutlined,
+  DoorBackOutlined,
 } from "@mui/icons-material";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -21,11 +21,17 @@ function Footer() {
       case "/share":
         setValue(1);
         break;
+      case "/request":
+        setValue(2);
+        break;
+      case "/receive":
+        setValue(3);
+        break;
       case "/history":
         setValue(4);
         break;
     }
-  }, []);
+  }, [router.pathname]);
   return (
     <S.Footer
       value={value}
@@ -38,13 +44,19 @@ function Footer() {
           case 1:
             router.push("/share");
             break;
+          case 2:
+            router.push("/request");
+            break;
+          case 3:
+            router.push("/receive");
+            break;
           case 4:
             router.push("/history");
             break;
         }
       }}
     >
-      <S.Tab label="내 방" value={0} icon={<BsDoorClosed size={20} />} />
+      <S.Tab label="내 방" value={0} icon={<DoorBackOutlined />} />
       <S.Tab label="방 공유 요청" value={1} icon={<SendToMobileOutlined />} />
       <S.Tab label="요청 목록" value={2} icon={<NotificationsNone />} />
       <S.Tab label="대기 목록" value={3} icon={<HourglassTopOutlined />} />

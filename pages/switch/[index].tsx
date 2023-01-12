@@ -3,12 +3,12 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import React from "react";
 import Image from "next/image";
 import * as S from "./style";
+import * as A from "../../styles/all";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { switchRoom } from "../../util/api/switch";
 
 export default function ToggleDoor() {
-
   const router = useRouter();
   const number: number = Number(router.query.index);
 
@@ -18,16 +18,16 @@ export default function ToggleDoor() {
   const handleSwitch = () => {
     if (state) setText("CLOSE");
     else setText("OPEN");
-    try{
+    try {
       switchRoom(number, !state);
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
     setState((prev) => !prev);
   };
 
   return (
-    <>
+    <A.Section>
       <S.ArrowStyle>
         <Link href={"/"}>
           <ArrowBackIcon />
@@ -35,8 +35,8 @@ export default function ToggleDoor() {
       </S.ArrowStyle>
       <S.SwitchContainer>
         <S.Room>
-          <Image src="/image/door.svg" width={150} height={150} alt="door" />
-          <p>{number}호</p>
+          <Image src="/image/door.svg" width={110} height={110} alt="door" />
+          <p>{number}</p>
         </S.Room>
         <S.RoomName>내 방</S.RoomName>
         <S.StateText>{text}</S.StateText>
@@ -47,6 +47,6 @@ export default function ToggleDoor() {
           onChange={handleSwitch}
         />
       </S.SwitchContainer>
-    </>
+    </A.Section>
   );
 }

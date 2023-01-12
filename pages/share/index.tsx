@@ -5,15 +5,17 @@ import { useQuery } from "react-query";
 import * as S from "./share.styles";
 import { getAllRoomList } from "../../util/api/share";
 import { RoomListType } from "./share.type";
+import { CircularProgress } from "@mui/material";
+import Loading from "../../components/loading/Loading";
 
 function Share() {
   const allRoomListQuery = useQuery("allRoomList", () => getAllRoomList());
   return (
     <A.Section>
       <A.Title>방 공유 요청</A.Title>
-      <S.Rooms>
-        {allRoomListQuery.isSuccess &&
-          allRoomListQuery.data.map((item: RoomListType) => {
+      {allRoomListQuery.isSuccess ? (
+        <S.Rooms>
+          {allRoomListQuery.data.map((item: RoomListType) => {
             return (
               <Room
                 key={item.id}
@@ -24,7 +26,10 @@ function Share() {
               />
             );
           })}
-      </S.Rooms>
+        </S.Rooms>
+      ) : (
+        <Loading />
+      )}
     </A.Section>
   );
 }
