@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import List from "../../components/list/list";
 import { getRequestList } from "../../util/api/request";
-import { ShareListType } from "./type";
+import { ShareListType } from "../../types/request.type";
 import React from "react";
-import * as S from "./request.style";
+import * as S from "../../styles/request/request.style";
 import { Section, Title } from "../../styles/all";
 import Loading from "../../components/loading/Loading";
 
@@ -35,7 +35,7 @@ export default function Request() {
           <>
             {shareRequestList.map((value: ShareListType, index) => {
               return (
-                <List name={value.owner.name} state={value.stat} key={index} />
+                <List name={value.owner.name} state={value.stat} key={index} shareId={value.id} />
               );
             })}
           </>

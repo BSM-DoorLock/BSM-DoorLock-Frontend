@@ -1,4 +1,4 @@
-import { UserType } from "../../pages/type";
+import { UserType } from "../../types/main.type";
 
 export interface RoomPropsType {
     number: number;
