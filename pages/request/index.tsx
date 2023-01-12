@@ -6,6 +6,7 @@ import { ShareListType } from "./type";
 import React from "react";
 import * as S from "./request.style";
 import { Section, Title } from "../../styles/all";
+import Loading from "../../components/loading/Loading";
 
 export default function Request() {
   const router = useRouter();
@@ -30,11 +31,17 @@ export default function Request() {
     <S.RequestContainer>
       <Section>
         <Title>공유 요청 기록</Title>
-        {shareRequestList.map((value: ShareListType, index) => {
-          return (
-            <List name={value.owner.name} state={value.stat} key={index} />
-          );
-        })}
+        {requestList.isSuccess ? (
+          <>
+            {shareRequestList.map((value: ShareListType, index) => {
+              return (
+                <List name={value.owner.name} state={value.stat} key={index} />
+              );
+            })}
+          </>
+        ) : (
+          <Loading />
+        )}
       </Section>
     </S.RequestContainer>
   );

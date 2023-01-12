@@ -57,7 +57,11 @@ function Header() {
                   유저 정보
                 </S.UserInfo>
               </S.StyledMenuItem>
-              <S.StyledMenuItem onClick={() => logoutMutation.mutate()}>
+              <S.StyledMenuItem
+                onClick={() => {
+                  logoutMutation.mutate();
+                }}
+              >
                 LOGOUT
               </S.StyledMenuItem>
             </S.StyledMenu>

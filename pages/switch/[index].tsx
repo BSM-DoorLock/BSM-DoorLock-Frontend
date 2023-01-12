@@ -36,7 +36,7 @@ export default function ToggleDoor() {
       <S.SwitchContainer>
         <S.Room>
           <Image src="/image/door.svg" width={110} height={110} alt="door" />
-          <p>{number}호</p>
+          <p>{number}</p>
         </S.Room>
         <S.RoomName>내 방</S.RoomName>
         <S.StateText>{text}</S.StateText>

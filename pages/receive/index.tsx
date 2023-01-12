@@ -6,6 +6,7 @@ import * as S from "./receive.style";
 import { ShareListType } from "../request/type";
 import { getReceiveList } from "../../util/api/receive";
 import { Section, Title } from "../../styles/all";
+import Loading from "../../components/loading/Loading";
 
 export default function Request() {
   const router = useRouter();
@@ -30,11 +31,17 @@ export default function Request() {
     <S.RequestContainer>
       <Section>
         <Title>받은 공유 요청 </Title>
-        {shareReceiveList.map((value: ShareListType, index) => {
-          return (
-            <List name={value.owner.name} state={value.stat} key={index} />
-          );
-        })}
+        {receiveList.isSuccess ? (
+          <>
+            {shareReceiveList.map((value: ShareListType, index) => {
+              return (
+                <List name={value.owner.name} state={value.stat} key={index} />
+              );
+            })}
+          </>
+        ) : (
+          <Loading />
+        )}
       </Section>
     </S.RequestContainer>
   );

@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import styled from "styled-components";
 
 export const Section = styled.div`
@@ -6,6 +7,7 @@ export const Section = styled.div`
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
+  min-height: 100vh;
 `;
 
 export const Title = styled.p`

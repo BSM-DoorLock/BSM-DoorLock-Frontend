@@ -64,7 +64,7 @@ export default function Home() {
         <S.ShareRoom>
           <S.Title>
             <p>공유된 방</p>
-            <AddToPhotos />
+            <AddToPhotos onClick={() => router.push('/share')} />
           </S.Title>
           <div className="rooms">
             {mounted && localStorage.accessToken ? (
