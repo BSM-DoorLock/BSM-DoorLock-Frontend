@@ -1,7 +1,8 @@
+import { UserType } from "../../pages/type";
+
 export interface RoomPropsType {
     number: number;
-    owner1?: string;
-    owner2?: string;
+    owners: UserType[];
     isShare?: true;
     ownerId?: string;
 }

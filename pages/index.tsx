@@ -55,11 +55,7 @@ export default function Home() {
           </S.Title>
           {myRoomQuery.isSuccess ? (
             <S.StyledLink href={`/switch/${myRoomInfo.id}`}>
-              <Room
-                number={myRoomInfo.id}
-                owner1={myRoomInfo.owners[0].name}
-                owner2={myRoomInfo.owners[1].name}
-              />
+              <Room number={myRoomInfo.id} owners={myRoomInfo.owners} />
             </S.StyledLink>
           ) : (
             <div>로그인 후 이용 가능합니다!</div>
@@ -71,23 +67,22 @@ export default function Home() {
             <AddToPhotos />
           </S.Title>
           <div className="rooms">
-            {mounted && localStorage.accessToken ? (shareRoomQuery.isSuccess && shareRoomInfo.length > 0 ? (
-              shareRoomInfo.map((value: RoomInfoType, index) => {
-                return (
-                  <Room
-                    number={value.id}
-                    owner1={value.owners[0].name}
-                    owner2={value.owners[1].name}
-                    key={index}
-                  />
-                );
-              })
+            {mounted && localStorage.accessToken ? (
+              shareRoomQuery.isSuccess && shareRoomInfo.length > 0 ? (
+                shareRoomInfo.map((value: RoomInfoType, index) => {
+                  return (
+                    <Room number={value.id} owners={value.owners} key={index} />
+                  );
+                })
+              ) : (
+                <S.Empty>
+                  <SearchOff />
+                  <p>공유된 방이 없습니다</p>
+                </S.Empty>
+              )
             ) : (
-              <S.Empty>
-                <SearchOff />
-                <p>공유된 방이 없습니다</p>
-              </S.Empty>
-            )) : <span>로그인 후 이용 가능합니다~</span>}
+              <span>로그인 후 이용 가능합니다~</span>
+            )}
           </div>
         </S.ShareRoom>
       </S.MainSection>
