@@ -1,6 +1,7 @@
+import Button from "@mui/material/Button";
 import styled from "styled-components";
 
-export const RoomContainer = styled.div`
+export const RoomContainer = styled(Button)`
     width: 200px;
     height: 220px;
     box-shadow: 0 8px 10px lightgray;
@@ -9,14 +10,11 @@ export const RoomContainer = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    color: black;
 
     .owners{
         margin-top: 15px;
         font-size: 18px;
-    }
-
-    &:active{
-        background-color: #e6e6e6;
     }
 `
 

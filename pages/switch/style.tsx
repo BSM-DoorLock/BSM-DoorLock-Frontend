@@ -5,7 +5,7 @@ export const Room = styled.div`
     position: relative;
     p{
         position: absolute;
-        top: 10px;
+        top: 25px;
         left: 50%;
         transform: translate(-50%);
         font-size: 18px;
@@ -35,10 +35,11 @@ export const ArrowStyle = styled.span`
 
 export const RoomName = styled.p` 
     font-size: 40px;
+    padding-top: 35px;
 `
 
 export const StateText = styled.span`
-    margin: 3.5em 0 30px 0;
+    margin: 2.5em 0 30px 0;
     font-size: 40px;
 `
 
