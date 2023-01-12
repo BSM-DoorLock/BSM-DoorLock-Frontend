@@ -52,8 +52,7 @@ export default function Home() {
           {!myRoomQuery.isLoading && (
             <Room
               number={myRoomInfo.id}
-              owner1={myRoomInfo.owners[0].name}
-              owner2={myRoomInfo.owners[1].name}
+              owners={myRoomInfo.owners}
             />
           )}
         </S.MyRoom>
@@ -68,8 +67,7 @@ export default function Home() {
                 return (
                   <Room
                     number={value.id}
-                    owner1={value.owners[0].name}
-                    owner2={value.owners[1].name}
+                    owners={value.owners}
                     key={index}
                   />
                 );
