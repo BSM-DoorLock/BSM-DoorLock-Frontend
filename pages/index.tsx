@@ -17,7 +17,7 @@ export default function Home() {
       {/* <S.Flex>
         <S.Button>로그인</S.Button>
       </S.Flex> */}
-      <Header />
+      {/* <Header /> */}
       <S.MainSection>
         <S.MyRoom>
           <S.Title>
@@ -37,65 +37,6 @@ export default function Home() {
           </div>
         </S.ShareRoom>
       </S.MainSection>
-      <Footer />
     </div>
   );
 }
-
-const Flex = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const MyRoom = styled.div`
-  padding-left: 5px;
-  width: 80%;
-  height: 40%;
-  margin: 11% auto auto;
-  p {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
-`;
-
-const ShareRoom = styled(MyRoom)`
-  .title {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    p {
-      margin: 0;
-    }
-    svg {
-      margin-left: 15px;
-    }
-  }
-
-  .rooms {
-    margin-top: 60px;
-    display: flex;
-    gap: 30px;
-    div {
-      padding-left: 12px;
-      padding-right: 12px;
-    }
-  }
-
-  padding-bottom: 20px;
-  overflow: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const Button = styled.button`
-  margin: 20px 20px 0 0;
-  width: 100px;
-  height: 40px;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 5px lightgray;
-`;
