@@ -32,7 +32,6 @@ export default function StudentGraph({ data }: { data: StudentRankingType[] }) {
     labels: studentRanking.labels,
     datasets: [
       {
-        label: "명",
         data: studentRanking.datasets,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",

@@ -35,7 +35,6 @@ export default function RoomGraph({ data }: { data: RoomRankingType[] }) {
     labels: roomRanking.labels,
     datasets: [
       {
-        label: "방",
         data: roomRanking.datasets,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
