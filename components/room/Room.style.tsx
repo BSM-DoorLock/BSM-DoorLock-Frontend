@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import styled from "styled-components";
 
 export const RoomContainer = styled(Button)`
-    width: 200px;
+    min-width: 200px;
     height: 220px;
     box-shadow: 0 8px 10px lightgray;
     display: flex;

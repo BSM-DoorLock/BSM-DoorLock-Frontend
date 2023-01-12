@@ -25,7 +25,7 @@ export default function RoomGraph({ data }: { data: RoomRankingType[] }) {
                         .filter((_, i) => i >= 6);
     
     if (etcList.length) {
-      roomLabelsArr.push('기타');
+      roomLabelsArr.push('나머지');
       roomDatasetsArr.push(etcList.map(value => value.totalGuests)
                       .reduce((a, b) => a + b, 0));
     }
