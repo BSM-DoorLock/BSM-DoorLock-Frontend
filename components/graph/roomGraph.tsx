@@ -1,5 +1,5 @@
 import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { RoomRankingType } from "../../types/main.type";
 import { useEffect, useState } from "react";
 import { GraphRoomRankingType } from "./graph.type";
@@ -8,29 +8,28 @@ import { init } from "./util";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function RoomGraph({ data }: { data: RoomRankingType[] }) {
-     const [roomRanking, setRoomRanking] = useState<GraphRoomRankingType>(init);
+  const [roomRanking, setRoomRanking] = useState<GraphRoomRankingType>(init);
 
-     console.log("room ", data);
-    useEffect(()=>{
-        const roomLabelsArr: number[] = [];
-        const roomDatasetsArr: number[] = [];
+  useEffect(() => {
+    const roomLabelsArr: number[] = [];
+    const roomDatasetsArr: number[] = [];
 
-        data.forEach((value: RoomRankingType) => {
-          if (value.totalGuests > 0) {
-            roomLabelsArr.push(value.id);
-            roomDatasetsArr.push(value.totalGuests);
-          }
-        });
+    data.forEach((value: RoomRankingType) => {
+      if (value.totalGuests > 0) {
+        roomLabelsArr.push(value.id);
+        roomDatasetsArr.push(value.totalGuests);
+      }
+    });
 
-        roomDatasetsArr.sort((a, b) => b - a);
-        roomLabelsArr.sort((a, b) => b - a);
+    roomDatasetsArr.sort((a, b) => b - a);
+    roomLabelsArr.sort((a, b) => b - a);
 
-        setRoomRanking((prev) => ({
-          ...prev,
-          labels: roomLabelsArr,
-          datasets: roomDatasetsArr,
-        }))
-    }, [])
+    setRoomRanking((prev) => ({
+      ...prev,
+      labels: roomLabelsArr,
+      datasets: roomDatasetsArr,
+    }));
+  }, []);
 
   const testData = {
     labels: roomRanking.labels,

@@ -50,9 +50,9 @@ export default function Home() {
       setMyRoomInfo(myRoomQuery.data);
     }
     if (shareRoomQuery.isSuccess) {
-      setShareRoomInfo(myRoomQuery.data);
+      setShareRoomInfo(shareRoomQuery.data);
+      // setLen(shareRoomQuery.data.length);
     }
-
     if (roomRankingQuery.isSuccess) {
       setRoomRankingInfo(roomRankingQuery.data);
     }

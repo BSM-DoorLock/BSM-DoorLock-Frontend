@@ -1,5 +1,5 @@
 import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { StudentRankingType } from "../../types/main.type";
 import { useEffect, useState } from "react";
 import { GraphStudentRankingType } from "./graph.type";
@@ -8,26 +8,25 @@ import { init } from "./util";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function StudentGraph({ data }: { data: StudentRankingType[] }) {
-    const [studentRanking, setStudentRanking] = useState<GraphStudentRankingType>(init)
+  const [studentRanking, setStudentRanking] = useState<GraphStudentRankingType>(init);
 
-    console.log("student", data);
-    useEffect(()=>{
-        const studentLabelsArr: string[] = [];
-        const studentDatasetsArr: number[] = [];
+  useEffect(() => {
+    const studentLabelsArr: string[] = [];
+    const studentDatasetsArr: number[] = [];
 
-        data.forEach((value: StudentRankingType) => {
-          if(value.totalSharedRooms > 0) {
-              studentLabelsArr.push(value.student.name);
-              studentDatasetsArr.push(value.totalSharedRooms);
-          }
-      })
+    data.forEach((value: StudentRankingType) => {
+      if (value.totalSharedRooms > 0) {
+        studentLabelsArr.push(value.student.name);
+        studentDatasetsArr.push(value.totalSharedRooms);
+      }
+    });
 
-      setStudentRanking((prev) => ({
-          ...prev,
-          labels: studentLabelsArr,
-          datasets: studentDatasetsArr,
-      }))
-    }, [])
+    setStudentRanking((prev) => ({
+      ...prev,
+      labels: studentLabelsArr,
+      datasets: studentDatasetsArr,
+    }));
+  }, []);
 
   const testData = {
     labels: studentRanking.labels,
