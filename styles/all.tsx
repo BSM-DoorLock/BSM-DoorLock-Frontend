@@ -9,5 +9,6 @@ export const Section = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 30px;
+  font-size: 30px !important;
+  margin: 0 !important;
 `;

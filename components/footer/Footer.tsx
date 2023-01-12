@@ -21,6 +21,12 @@ function Footer() {
       case "/share":
         setValue(1);
         break;
+      case "/request":
+        setValue(1);
+        break;
+      case "/receive":
+        setValue(1);
+        break;
       case "/history":
         setValue(4);
         break;
@@ -37,6 +43,12 @@ function Footer() {
             break;
           case 1:
             router.push("/share");
+            break;
+          case 2:
+            router.push("/request");
+            break;
+          case 3:
+            router.push("/receive");
             break;
           case 4:
             router.push("/history");

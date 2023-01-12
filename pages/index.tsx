@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { RoomInfoType } from "./type";
 import { RoomInfoInit } from "./init";
+import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
@@ -50,11 +51,13 @@ export default function Home() {
             <p>내 방</p>
           </S.Title>
           {!myRoomQuery.isLoading && (
-            <Room
-              number={myRoomInfo.id}
-              owner1={myRoomInfo.owners[0].name}
-              owner2={myRoomInfo.owners[1].name}                                                                
-            />
+            <S.StyledLink href={`/switch/${myRoomInfo.id}`}>
+              <Room
+                number={myRoomInfo.id}
+                owner1={myRoomInfo.owners[0].name}
+                owner2={myRoomInfo.owners[1].name}
+              />
+            </S.StyledLink>
           )}
         </S.MyRoom>
         <S.ShareRoom>

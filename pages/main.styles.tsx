@@ -1,8 +1,11 @@
+import Link from "next/link";
 import styled from "styled-components";
 import { Section } from "../styles/all";
 
 export const MainSection = styled(Section)`
   padding: 56px 11%;
+  margin: 0 !important;
+  width: 100%;
 `;
 
 export const Flex = styled.div`
@@ -21,9 +24,15 @@ export const Title = styled.div`
   align-items: center;
   margin-top: 40px;
   gap: 20px;
-  p{
+  p {
     font-size: 30px;
     margin-bottom: 10px;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  &:link {
+    color: white;
   }
 `;
 
@@ -76,12 +85,12 @@ export const Empty = styled.div`
   }
 
   @media ${({ theme }) => theme.size.tablet} {
-    p{
+    p {
       font-size: 30px;
     }
     svg {
-    width: 60px;
-    height: 60px;
-  }
+      width: 60px;
+      height: 60px;
+    }
   }
 `;
